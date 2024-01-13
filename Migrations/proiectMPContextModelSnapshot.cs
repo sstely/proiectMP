@@ -36,7 +36,7 @@ namespace proiectMP.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Allergen");
+                    b.ToTable("Allergen", (string)null);
                 });
 
             modelBuilder.Entity("proiectMP.Models.Category", b =>
@@ -53,7 +53,7 @@ namespace proiectMP.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Category");
+                    b.ToTable("Category", (string)null);
                 });
 
             modelBuilder.Entity("proiectMP.Models.Ingredient", b =>
@@ -91,7 +91,7 @@ namespace proiectMP.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Ingredient");
+                    b.ToTable("Ingredient", (string)null);
                 });
 
             modelBuilder.Entity("proiectMP.Models.Product", b =>
@@ -127,7 +127,7 @@ namespace proiectMP.Migrations
 
                     b.HasIndex("CategoryID");
 
-                    b.ToTable("Product");
+                    b.ToTable("Product", (string)null);
                 });
 
             modelBuilder.Entity("proiectMP.Models.ProductAllergen", b =>
@@ -150,7 +150,7 @@ namespace proiectMP.Migrations
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("ProductAllergen");
+                    b.ToTable("ProductAllergen", (string)null);
                 });
 
             modelBuilder.Entity("proiectMP.Models.ProductIngredient", b =>
@@ -173,7 +173,7 @@ namespace proiectMP.Migrations
 
                     b.HasIndex("ProductID");
 
-                    b.ToTable("ProductIngredient");
+                    b.ToTable("ProductIngredient", (string)null);
                 });
 
             modelBuilder.Entity("proiectMP.Models.Product", b =>
