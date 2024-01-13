@@ -1,11 +1,11 @@
-﻿@page
+﻿@page "/"
 @model proiectMP.Pages.Products.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Menu";
 }
 
-<h1>Index</h1>
+<h1>Products</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -20,10 +20,19 @@
                 @Html.DisplayNameFor(model => model.Product[0].Description)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Product[0].Category.CategoryName)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Product[0].Price)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Product[0].Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].ProductIngredients)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].ProductAllergens)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Product[0].CoverImageURL)
@@ -32,8 +41,16 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Product) {
-        <tr>
+@foreach (var item in Model.ProductD.Products) {
+
+            string selectedRow = "";
+
+            if (item.ID == Model.ProductID)
+            {
+                selectedRow = "table-success";
+            }
+
+        <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -41,10 +58,29 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @{
+                    foreach (var ingredient in item.ProductIngredients)
+                    {
+                        @ingredient.Ingredient.ID @: @ingredient.Ingredient.IngredientName <br />
+                    }
+                }
+            </td>
+            <td>
+                @{
+                    foreach (var allergen in item.ProductAllergens)
+                    {
+                        @allergen.Allergen.ID @: @allergen.Allergen.AllergenName <br />
+                    }
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CoverImageURL)

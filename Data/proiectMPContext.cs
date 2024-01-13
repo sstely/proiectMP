@@ -15,5 +15,11 @@ namespace proiectMP.Data
         }
 
         public DbSet<proiectMP.Models.Product> Product { get; set; } = default!;
+
+        public DbSet<proiectMP.Models.Ingredient> Ingredient { get; set; } = default!;
+
+        public DbSet<proiectMP.Models.Allergen> Allergen { get; set; } = default!;
+
+        public DbSet<proiectMP.Models.Category> Category { get; set; } = default!;
     }
 }
