@@ -26,10 +26,17 @@ namespace proiectMP.Pages.Products
         public int IngredientID { get; set; }
         public int AllergenID { get; set; }
 
+        public string NameSort { get; set; }
 
-        public async Task OnGetAsync(int? id, int? ingredientID, int? allergenID)
+        public string CurrentFilter { get; set; }
+
+
+        public async Task OnGetAsync(int? id, int? ingredientID, int? allergenID, string sortOrder, string searchString)
         {
             ProductD = new ProductData();
+
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            CurrentFilter = searchString;
 
             ProductD.Products = await _context.Product
                 .Include(p => p.Category)
@@ -39,12 +46,27 @@ namespace proiectMP.Pages.Products
                 .OrderBy(p => p.Name)
                 .ToListAsync();
 
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                ProductD.Products = ProductD.Products.Where(s => s.Name.Contains(searchString));
+            }
+
             if (id != null)
             {
                 ProductID = id.Value;
                 Product product = ProductD.Products.Where(i => i.ID == id.Value).Single();
                 ProductD.Ingredients = product.ProductIngredients.Select(s => s.Ingredient);
                 ProductD.Allergens = product.ProductAllergens.Select(s => s.Allergen);
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    ProductD.Products = ProductD.Products.OrderByDescending(s => s.Name);
+                    break;
+                default:
+                    ProductD.Products = ProductD.Products.OrderBy(s => s.Name);
+                    break;
             }
         }
     }
