@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using proiectMP.Data;
 
@@ -11,9 +12,11 @@ using proiectMP.Data;
 namespace proiectMP.Migrations
 {
     [DbContext(typeof(proiectMPContext))]
-    partial class proiectMPContextModelSnapshot : ModelSnapshot
+    [Migration("20240114184715_Reservations")]
+    partial class Reservations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

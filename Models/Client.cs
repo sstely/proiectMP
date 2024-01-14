@@ -31,5 +31,7 @@ namespace proiectMP.Models
         }
 
         public ICollection<Comment>? Comments { get; set; }
+
+        public ICollection<Reservation>? Reservations { get; set; }
     }
 }
