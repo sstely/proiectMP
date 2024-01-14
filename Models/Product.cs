@@ -9,7 +9,7 @@ namespace proiectMP.Models
         public int ID { get; set; }
 
         [Display(Name = "Product")]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Name { get; set; }
 
         [StringLength(500)]
@@ -31,6 +31,10 @@ namespace proiectMP.Models
 
         public string CoverImageURL { get; set; }
 
+
+        [NotMapped]
+
+        public IFormFile CoverImageFile { get; set; }
 
     }
 }
