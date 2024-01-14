@@ -1,0 +1,45 @@
+﻿@page
+@model proiectMP.Pages.Reservations.IndexModel
+
+@{
+    ViewData["Title"] = "Reservations";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Reservations</h1>
+
+<p>
+    <a asp-page="Create">Add New Reservation</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation[0].Client)
+            </th>
+            <th>Number of People</th>
+            <th>Reservation Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Reservation) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberPeople)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationDate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -2,13 +2,13 @@
 @model proiectMP.Pages.Products.IndexModel
 
 @{
-    ViewData["Title"] = "Menu";
+    ViewData["Title"] = "All Products";
 }
 
-<h1>Products</h1>
+<h1>All Products</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Add New Product</a>
 </p>
 
 <form asp-page="./Index" method="get">
@@ -43,12 +43,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.Product[0].Quantity)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].ProductIngredients)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].ProductAllergens)
-            </th>
+            <th>Ingredients</th>
+            <th>Allergens</th>
             <th></th>
         </tr>
     </thead>
@@ -85,7 +81,7 @@
                 @{
                     foreach (var ingredient in item.ProductIngredients)
                     {
-                        @ingredient.Ingredient.ID @: @ingredient.Ingredient.IngredientName <br />
+                        @ingredient.Ingredient.IngredientName <br />
                     }
                 }
             </td>
@@ -93,7 +89,7 @@
                 @{
                     foreach (var allergen in item.ProductAllergens)
                     {
-                        @allergen.Allergen.ID @: @allergen.Allergen.AllergenName <br />
+                        @allergen.Allergen.AllergenName <br />
                     }
                 }
             </td>

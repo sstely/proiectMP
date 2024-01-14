@@ -31,7 +31,9 @@
 
         <tr class="@selectedRow">
             <td>
+                <a asp-page="/ProductsByCategory/Index" asp-route-categoryId="@item.ID">
                 @Html.DisplayFor(modelItem => item.CategoryName)
+                </a>
             </td>
             <td>
                 <a asp-page="./Index" asp-route-id="@item.ID">Select</a> |
