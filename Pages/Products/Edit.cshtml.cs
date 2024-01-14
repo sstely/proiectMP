@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,6 +14,7 @@ using proiectMP.Models;
 
 namespace proiectMP.Pages.Products
 {
+    [Authorize(Roles = "Admin")]
     public class EditModel : ProductIngrAllrgPageModel
     {
         private readonly proiectMP.Data.proiectMPContext _context;

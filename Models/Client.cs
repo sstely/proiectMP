@@ -6,10 +6,15 @@ namespace proiectMP.Models
     {
         public int ID { get; set; }
 
+        [RegularExpression(@"^[A-Z]+[a-z\s]*$", ErrorMessage = "First Name should start with capital letter (eg: Jo or Jo Nas or Jo-Nas)")]
+        [StringLength(25, MinimumLength = 2)]
         public string? FirstName { get; set; }
 
+        [RegularExpression(@"^[A-Z]+[a-z\s]*$", ErrorMessage = "Last Name should start with capital letter (eg: Liu or Liu Kang or Liu-Kang)")]
+        [StringLength(25, MinimumLength = 2)]
         public string? LastName { get; set; }
 
+        [StringLength(50)]
         public string Email { get; set; }
 
         public string? Phone { get; set; }
