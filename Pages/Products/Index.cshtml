@@ -25,6 +25,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th>Cover</th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
                 @Html.DisplayNameFor(model => model.Product[0].Name)
@@ -47,9 +48,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Product[0].ProductAllergens)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].CoverImageURL)
             </th>
             <th></th>
         </tr>
@@ -98,9 +96,6 @@
                         @allergen.Allergen.ID @: @allergen.Allergen.AllergenName <br />
                     }
                 }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CoverImageURL)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

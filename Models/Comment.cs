@@ -10,7 +10,7 @@ namespace proiectMP.Models
 
         public Client? Client { get; set; }
 
-        [StringLength(200)]
+        [StringLength(200,ErrorMessage = "Text is too long. It can't be more than 200")]
         public string Text { get; set; }
 
 

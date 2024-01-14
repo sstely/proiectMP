@@ -1,0 +1,19 @@
+﻿@model proiectMP.Models.Comment
+
+<table style="width: 100%; border: 1px solid black">
+    <tr>
+        <td>
+            @Model.Client.FullName
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Model.PostDate.ToString("dd-MMM-yyyy")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Model.Text
+        </td> 
+    </tr>
+</table>

@@ -9,10 +9,10 @@ namespace proiectMP.Models
         public int ID { get; set; }
 
         [Display(Name = "Product")]
-        [StringLength(100)]
+        [StringLength(200, ErrorMessage = "Name length too long. It can't be more than 200")]
         public string Name { get; set; }
 
-        [StringLength(500)]
+        [StringLength(500, ErrorMessage = "Description too long. It can't be more than 500")]
         public string Description { get; set; }
 
         [Column(TypeName = "decimal(6,2)")]

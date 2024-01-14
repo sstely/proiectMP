@@ -8,6 +8,7 @@ namespace proiectMP.Models
         public int ID { get; set; }
 
         [Display(Name = "Ingredient")]
+        [StringLength(200, ErrorMessage = "Name length too long. It can't be more than 200")]
         public string IngredientName { get; set; }
 
         [Column(TypeName = "decimal(8,2)")]

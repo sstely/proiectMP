@@ -36,6 +36,7 @@ namespace proiectMP.Pages.Products
             ProductD = new ProductData();
 
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
             CurrentFilter = searchString;
 
             ProductD.Products = await _context.Product
