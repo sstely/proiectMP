@@ -164,7 +164,6 @@ namespace proiectMP.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CoverImageURL")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")

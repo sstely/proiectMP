@@ -12,10 +12,21 @@ builder.Services.AddAuthorization(options =>
 // Add services to the container.
 builder.Services.AddRazorPages(options =>
 {
-    options.Conventions.AuthorizeFolder("/Products");
-    options.Conventions.AllowAnonymousToPage("/Products/Index");
-    options.Conventions.AllowAnonymousToPage("/Products/Details");
+    options.Conventions.AuthorizeFolder("/Products", "AdminPolicy");
+
+    options.Conventions.AuthorizeFolder("/Categories");
+    options.Conventions.AllowAnonymousToPage("/Categories/Index");
+
+    options.Conventions.AuthorizeFolder("/Comments");
+    options.Conventions.AllowAnonymousToPage("/Comments/Index");
+
+    options.Conventions.AuthorizeFolder("/Ingredients");
+
+    options.Conventions.AuthorizeFolder("/Allergens", "AdminPolicy");
+
     options.Conventions.AuthorizeFolder("/Clients", "AdminPolicy");
+
+    options.Conventions.AuthorizeFolder("/Reservations", "AdminPolicy");
 });
 
 builder.Services.AddDbContext<proiectMPContext>(options =>

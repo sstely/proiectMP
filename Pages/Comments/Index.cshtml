@@ -16,12 +16,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.Comment[0].Client)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comment[0].Text)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comment[0].PostDate)
-            </th>
+            <th></th>
+            <th>Posted On</th>
             <th></th>
         </tr>
     </thead>
@@ -37,11 +33,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PostDate)
             </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            }
+
         </tr>
 }
     </tbody>

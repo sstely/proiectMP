@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/"
 @model proiectMP.Pages.HomeModel
 
 @{
@@ -6,24 +6,28 @@
 }
 
 <div class="text-center">
-    <img src="/images/restaurant1.jpg" class="img-thumbnail" />
+    <h1 class="display-4 mb-3 mt-6">Welcome To Frady Fozber!</h1>
 
-    <h1 class="display-4">Welcome To Frady Fozber!</h1>
+    <img src="/images/restaurant1.jpg" class="img-thumbnail mb-3 mt-3" />
 
-    <p>Welcome to Mica Ciuperca, where culinary delights and natural wonders collide in a symphony of flavors. 
-       Nestled in the heart of Cluj-Napoca, our restaurant is a sanctuary for those seeking a unique and savory experience.</p>
-    <p>At Mica Ciuperca, we celebrate the captivating world of mushrooms, weaving their earthy essence into every dish. Our menu, curated with care and creativity, 
-       showcases the rich tapestry of mushroom varieties, from the delicate enoki to the robust portobello. Each bite is an exploration of texture and taste, 
+    <p class="mb-4 mt-4">
+        Welcome to Mica Ciuperca, where culinary delights and natural wonders collide in a symphony of flavors.
+        Nestled in the heart of Cluj-Napoca, our restaurant is a sanctuary for those seeking a unique and savory experience.</p>
+    <p class="mb-4 mt-4">
+        At Mica Ciuperca, we celebrate the captivating world of mushrooms, weaving their earthy essence into every dish. Our menu, curated with care and creativity,
+        showcases the rich tapestry of mushroom varieties, from the delicate enoki to the robust portobello. Each bite is an exploration of texture and taste, 
        a journey through the diverse and delicious fungi kingdom.</p>
-    <p>As you step into our cozy haven, you'll notice the soothing hues of green that envelop the space, mirroring the lush landscapes where mushrooms thrive. 
-       The importance of the color green goes beyond aesthetics; it symbolizes our commitment to freshness and sustainability. Our ingredients, sourced locally 
+    <p class="mb-4 mt-4">
+        As you step into our cozy haven, you'll notice the soothing hues of green that envelop the space, mirroring the lush landscapes where mushrooms thrive.
+        The importance of the color green goes beyond aesthetics; it symbolizes our commitment to freshness and sustainability. Our ingredients, sourced locally 
        and responsibly, bring a vibrant touch to every plate.</p>
-    <p>Indulge in the magic of Mica Ciuperca, where every dish is a celebration of nature's bounty. Let the savory notes of perfectly seasoned mushrooms transport 
-       you to a world where gastronomy meets the enchanting allure of the forest. Join us in savoring the extraordinary flavors that bloom within the heart of each 
+    <p class="mb-4 mt-4">
+        Indulge in the magic of Mica Ciuperca, where every dish is a celebration of nature's bounty. Let the savory notes of perfectly seasoned mushrooms transport
+        you to a world where gastronomy meets the enchanting allure of the forest. Join us in savoring the extraordinary flavors that bloom within the heart of each 
        carefully crafted mushroom-infused creation. Welcome to a dining experience where green is not just a color; it's a promise of culinary delight and natural harmony.</p>
 </div>
 
-<h1>Reviews</h1>
+<h1 class="display-4 mb-3 mt-3">Our Reviews</h1>
 
 @foreach (var item in Model.Comment)
 {

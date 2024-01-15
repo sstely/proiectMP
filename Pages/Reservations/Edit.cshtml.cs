@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using proiectMP.Models;
 
 namespace proiectMP.Pages.Reservations
 {
+    [Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
         private readonly proiectMP.Data.proiectMPContext _context;
@@ -35,8 +37,10 @@ namespace proiectMP.Pages.Reservations
             {
                 return NotFound();
             }
+
             Reservation = reservation;
-           ViewData["ClientID"] = new SelectList(_context.Client, "ID", "ID");
+            ViewData["ClientID"] = new SelectList(_context.Client, "ID", "FullName");
+
             return Page();
         }
 

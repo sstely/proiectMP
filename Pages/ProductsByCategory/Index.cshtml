@@ -7,10 +7,6 @@
 
 <h1>@Model.CategoryName</h1>
 
-<p>
-    <a asp-page="Create">Add New Product</a>
-</p>
-
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
@@ -22,7 +18,7 @@
     </div>
 </form>
 
-<table class="table">
+<table class="table text-center align-middle">
     <thead>
         <tr>
             <th>Image</th>
@@ -35,13 +31,7 @@
                 @Html.DisplayNameFor(model => model.Product[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].Category.CategoryName)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Product[0].Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Quantity)
             </th>
             <th>Ingredients</th>
             <th>Allergens</th>
@@ -70,13 +60,7 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
                 </td>
                 <td>
                     @{
@@ -95,9 +79,7 @@
                     }
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    <a asp-page="./Details" asp-route-id="@item.ID" asp-route-categoryId="@Model.CategoryID">Details</a>
                 </td>
             </tr>
         }

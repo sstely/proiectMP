@@ -2,13 +2,12 @@
 @model proiectMP.Pages.Categories.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Details Category";
 }
 
 <h1>Details</h1>
 
 <div>
-    <h4>Category</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -21,5 +20,5 @@
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Category?.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Back to Menu</a>
 </div>

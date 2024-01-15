@@ -79,23 +79,6 @@ namespace proiectMP.Pages.Products
             Product.ProductIngredients = newProduct.ProductIngredients;
             Product.ProductAllergens = newProduct.ProductAllergens;
 
-            /*
-            byte[] bytes = null;
-
-            if(Product.CoverImageFile != null)
-            {
-                using(Stream fs = Product.CoverImageFile.OpenReadStream())
-                {
-                    using(BinaryReader br =  new BinaryReader(fs))
-                    {
-                        bytes = br.ReadBytes((Int32)fs.Length);
-                    }
-                }
-
-                Product.CoverImageURL = Convert.ToBase64String(bytes, 0, bytes.Length);
-            }
-            */
-
             if(Product.CoverImageFile != null)
             {
                 string folder = "products/cover/";

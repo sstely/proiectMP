@@ -1,18 +1,46 @@
 ﻿@model proiectMP.Models.Comment
 
-<table style="width: 100%; border: 1px solid black">
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    td {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    td:first-child {
+        font-weight: bold;
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+
+    .date {
+        font-size: smaller;
+    }
+
+    .comment {
+        color: #666;
+    }
+
+</style>
+
+<table>
     <tr>
         <td>
-            @Model.Client.FullName
+            @Model.Client.FullName | 
+            <span class="date">@Model.PostDate.ToString("dd-MMM-yyyy")</span>
         </td>
     </tr>
     <tr>
-        <td>
-            @Model.PostDate.ToString("dd-MMM-yyyy")
-        </td>
-    </tr>
-    <tr>
-        <td>
+        <td class="comment">
             @Model.Text
         </td> 
     </tr>

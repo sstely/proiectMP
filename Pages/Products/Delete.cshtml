@@ -2,14 +2,13 @@
 @model proiectMP.Pages.Products.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Delete Product";
 }
 
-<h1>Delete</h1>
-
+<h1>Delete Product</h1>
 <h3>Are you sure you want to delete this?</h3>
+
 <div>
-    <h4>Product</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -18,35 +17,59 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Product.Name)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Product.Description)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Product.Description)
         </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Product.Category.CategoryName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Product.Category.CategoryName)
+        </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Product.Price)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Product.Price)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Product.Quantity)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Product.Quantity)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Product.CoverImageURL)
-        </dt>
+
+        <dt class="col-sm-2">Ingredients</dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Product.CoverImageURL)
+            @{
+                foreach (var ingredient in Model.Product.ProductIngredients)
+                {
+                    @ingredient.Ingredient.IngredientName <br />
+                }
+            }
+        </dd>
+
+        <dt class="col-sm-2">Allergens</dt>
+        <dd class="col-sm-10">
+            @{
+                foreach (var allergen in Model.Product.ProductAllergens)
+                {
+                    @allergen.Allergen.AllergenName <br />
+                }
+            }
         </dd>
     </dl>
     
     <form method="post">
         <input type="hidden" asp-for="Product.ID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <a asp-page="./Index">Back to All Products</a>
     </form>
 </div>

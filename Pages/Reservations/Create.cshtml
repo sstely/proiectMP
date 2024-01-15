@@ -2,41 +2,40 @@
 @model proiectMP.Pages.Reservations.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add Reservation";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1>Add New Reservation</h1>
 
-<h4>Reservation</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Reservation.ClientID" class="control-label"></label>
+                <label asp-for="Reservation.ClientID" class="control-label">Client Name</label>
                 <select asp-for="Reservation.ClientID" class ="form-control" asp-items="ViewBag.ClientID"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Reservation.NumberPeople" class="control-label"></label>
+                <label asp-for="Reservation.NumberPeople" class="control-label">Number of People</label>
                 <input asp-for="Reservation.NumberPeople" class="form-control" />
                 <span asp-validation-for="Reservation.NumberPeople" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Reservation.ReservationDate" class="control-label"></label>
+                <label asp-for="Reservation.ReservationDate" class="control-label">Reservation Date</label>
                 <input asp-for="Reservation.ReservationDate" class="form-control" />
                 <span asp-validation-for="Reservation.ReservationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Add" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">Back to Reservations</a>
 </div>
 
 @section Scripts {

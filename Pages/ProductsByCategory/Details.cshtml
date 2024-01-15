@@ -1,55 +1,56 @@
-﻿@page
+﻿@page "{categoryId:int}"
 @model proiectMP.Pages.ProductsByCategory.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Details Product";
 }
 
-<h1>Details</h1>
+<h1 class="text-center">@Html.DisplayFor(model => model.Product.Name)</h1>
 
 <div>
-    <h4>Product</h4>
     <hr />
+    <div class="text-center">
+        <img src="@Model.Product.CoverImageURL" class="img-thumbnail" />
+        <p class="mb-4 mt-4">@Html.DisplayFor(model => model.Product.Description)</p>
+    </div>
+
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Product.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Product.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Product.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Product.Description)
-        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Product.Price)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Product.Price)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Product.Quantity)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Product.Quantity)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Product.Category)
-        </dt>
+
+        <dt class="col-sm-2">Ingredients</dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Product.Category.ID)
+            @{
+                foreach (var ingredient in Model.Product.ProductIngredients)
+                {
+                    @ingredient.Ingredient.IngredientName <br />
+                }
+            }
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Product.CoverImageURL)
-        </dt>
+
+        <dt class="col-sm-2">Allergens</dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Product.CoverImageURL)
+            @{
+                foreach (var allergen in Model.Product.ProductAllergens)
+                {
+                    @allergen.Allergen.AllergenName <br />
+                }
+            }
         </dd>
+
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Product?.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index" asp-route-categoryId="@Model.CategoryID">Back to @Model.CategoryName</a>
 </div>

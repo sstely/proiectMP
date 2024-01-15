@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page
 @model proiectMP.Pages.Products.IndexModel
 
 @{
@@ -22,10 +22,10 @@
     </div>
 </form>
 
-<table class="table">
+<table class="table text-center align-middle">
     <thead>
         <tr>
-            <th>Cover</th>
+            <th>Image</th>
             <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
                 @Html.DisplayNameFor(model => model.Product[0].Name)

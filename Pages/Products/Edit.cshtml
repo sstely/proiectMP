@@ -2,26 +2,25 @@
 @model proiectMP.Pages.Products.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Product";
 }
 
-<h1>Edit</h1>
+<h1>Edit Product</h1>
 
-<h4>Product</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Product.ID" />
             <div class="form-group">
-                <label asp-for="Product.Name" class="control-label"></label>
+                <label asp-for="Product.Name" class="control-label">Product Title</label>
                 <input asp-for="Product.Name" class="form-control" />
                 <span asp-validation-for="Product.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Product.Description" class="control-label"></label>
-                <input asp-for="Product.Description" class="form-control" />
+                <textarea asp-for="Product.Description" class="form-control"></textarea>
                 <span asp-validation-for="Product.Description" class="text-danger"></span>
             </div>
             <div class="form-group"> 
@@ -58,7 +57,7 @@
                                                name="selectedIngredients"
                                                value="@ingr.IngredientID"
                                                @(Html.Raw(ingr.Assigned ? "checked=\"checked\"" : "")) />
-                                        @ingr.IngredientID @: @ingr.Name
+                                        @ingr.Name
                                     @:</td>
                                 }
                                 @:</tr>
@@ -84,7 +83,7 @@
                                                name="selectedAllergens"
                                                value="@alg.AllergenID"
                                                @(Html.Raw(alg.Assigned ? "checked=\"checked\"" : "")) />
-                                        @alg.AllergenID @: @alg.Name
+                                        @alg.Name
                                     @:</td>
                                 }
                             @:</tr>
@@ -94,9 +93,9 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Product.CoverImageURL" class="control-label"></label>
-                <input asp-for="Product.CoverImageURL" class="form-control" />
-                <span asp-validation-for="Product.CoverImageURL" class="text-danger"></span>
+                <label asp-for="Product.CoverImageFile" class="control-label">Choose Image</label>
+                <input type="file" asp-for="Product.CoverImageFile" class="form-control" />
+                <span asp-validation-for="Product.CoverImageFile" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -106,7 +105,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Back to All Products</a>
 </div>
 
 @section Scripts {

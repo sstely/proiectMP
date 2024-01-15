@@ -26,6 +26,7 @@ namespace proiectMP.Pages.ProductsByCategory
         public int IngredientID { get; set; }
         public int AllergenID { get; set; }
 
+        public int CategoryID { get; set; }
         public string CategoryName {  get; set; }
 
         public string NameSort { get; set; }
@@ -39,6 +40,7 @@ namespace proiectMP.Pages.ProductsByCategory
             ProductD = new ProductData();
 
             var category = _context.Category.FirstOrDefault(c => c.ID == categoryId);
+            CategoryID = categoryId;
             CategoryName = category.CategoryName;
 
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";

@@ -2,14 +2,18 @@
 @model proiectMP.Pages.Categories.IndexModel
 
 @{
-    ViewData["Title"] = "Categories";
+    ViewData["Title"] = "Menu";
 }
 
-<h1>Cateogries</h1>
+<h1>Menu</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-page="Create">Add New Category</a>
+    </p>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -35,39 +39,14 @@
                 @Html.DisplayFor(modelItem => item.CategoryName)
                 </a>
             </td>
-            <td>
-                <a asp-page="./Index" asp-route-id="@item.ID">Select</a> |
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            }
         </tr>
 }
     </tbody>
 </table>
-
-@if (Model.CategoryData.Products != null)
-{
-    <h3>Our Products by Selected Category</h3>
-    <table class="table">
-        @foreach (var item in Model.CategoryData.Categories)
-        {
-            string selectedRow = "";
-            if (item.ID == Model.CategoryID)
-            {
-                selectedRow = "table-success";
-            }
-            <tr class="@selectedRow">
-                <td>
-                    @{
-                        foreach (var p in item.Products)
-                        {
-                            @p.Name @: @p.Description
-                            <br />
-                        }
-                    }
-                </td>
-            </tr>
-        }
-    </table>
-}

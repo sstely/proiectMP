@@ -2,12 +2,11 @@
 @model proiectMP.Pages.Ingredients.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add Ingredient";
 }
 
-<h1>Create</h1>
+<h1>Add New Ingredient</h1>
 
-<h4>Ingredient</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,12 +23,12 @@
                 <span asp-validation-for="Ingredient.Calories" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Ingredient.Unsaturated_Fats" class="control-label"></label>
+                <label asp-for="Ingredient.Unsaturated_Fats" class="control-label">Unsaturated Fats</label>
                 <input asp-for="Ingredient.Unsaturated_Fats" class="form-control" />
                 <span asp-validation-for="Ingredient.Unsaturated_Fats" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Ingredient.Saturated_Fats" class="control-label"></label>
+                <label asp-for="Ingredient.Saturated_Fats" class="control-label">Saturated Fats</label>
                 <input asp-for="Ingredient.Saturated_Fats" class="form-control" />
                 <span asp-validation-for="Ingredient.Saturated_Fats" class="text-danger"></span>
             </div>
@@ -54,14 +53,14 @@
                 <span asp-validation-for="Ingredient.Minerals" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Add" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">Back to Ingredients</a>
 </div>
 
 @section Scripts {

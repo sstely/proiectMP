@@ -18,14 +18,18 @@ namespace proiectMP.Pages.Products
     public class EditModel : ProductIngrAllrgPageModel
     {
         private readonly proiectMP.Data.proiectMPContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public EditModel(proiectMP.Data.proiectMPContext context)
+        public EditModel(proiectMP.Data.proiectMPContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [BindProperty]
         public Product Product { get; set; } = default!;
+
+        public string ProductImageURL { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -46,6 +50,7 @@ namespace proiectMP.Pages.Products
                 return NotFound();
             }
 
+            ProductImageURL = Product.CoverImageURL;
             PopulateAssignedIngredientData(_context, Product);
             PopulateAssignedAllergenData(_context, Product);
 
@@ -74,6 +79,19 @@ namespace proiectMP.Pages.Products
                 return NotFound();
             }
 
+            if(Product.CoverImageFile != null)
+            {
+                string folder = "products/cover/";
+                folder += Guid.NewGuid().ToString() + "_" + Product.CoverImageFile.FileName;
+
+                productToUpdate.CoverImageURL = "/" + folder;
+
+                string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+
+                await Product.CoverImageFile.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+
+            }
+
             if (await TryUpdateModelAsync<Product>(
                 productToUpdate,
                 "Product",
@@ -81,7 +99,7 @@ namespace proiectMP.Pages.Products
                 i => i.Description,
                 i => i.CategoryID,
                 i => i.Price, 
-                i => i.Quantity, 
+                i => i.Quantity,
                 i => i.CoverImageURL)
                 )
             {

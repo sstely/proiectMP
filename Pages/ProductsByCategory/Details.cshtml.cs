@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using proiectMP.Data;
+using proiectMP.Migrations;
 using proiectMP.Models;
 
 namespace proiectMP.Pages.ProductsByCategory
@@ -19,16 +20,30 @@ namespace proiectMP.Pages.ProductsByCategory
             _context = context;
         }
 
-      public Product Product { get; set; } = default!; 
+        public Product Product { get; set; } = default!;
+        public int IngredientID { get; set; }
+        public int AllergenID { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public int CategoryID { get; set; }
+        public string CategoryName { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(int categoryId, int? id, int? ingredientID, int? allergenID)
         {
             if (id == null || _context.Product == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Product.FirstOrDefaultAsync(m => m.ID == id);
+            var category = _context.Category.FirstOrDefault(c => c.ID == categoryId);
+            CategoryID = categoryId;
+            CategoryName = category.CategoryName;
+
+            var product = await _context.Product
+                .Include(p => p.Category)
+                .Include(p => p.ProductIngredients).ThenInclude(p => p.Ingredient)
+                .Include(p => p.ProductAllergens).ThenInclude(p => p.Allergen)
+                .FirstOrDefaultAsync(m => m.ID == id);
+
             if (product == null)
             {
                 return NotFound();

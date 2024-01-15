@@ -2,12 +2,11 @@
 @model proiectMP.Pages.Comments.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Review";
 }
 
-<h1>Edit</h1>
+<h1>Edit Review</h1>
 
-<h4>Comment</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Comment.ID" />
             <div class="form-group">
-                <label asp-for="Comment.ClientID" class="control-label"></label>
+                <label asp-for="Comment.ClientID" class="control-label">Client Name</label>
                 <select asp-for="Comment.ClientID" class="form-control" asp-items="ViewBag.ClientID"></select>
                 <span asp-validation-for="Comment.ClientID" class="text-danger"></span>
             </div>
@@ -25,7 +24,7 @@
                 <span asp-validation-for="Comment.Text" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Comment.PostDate" class="control-label"></label>
+                <label asp-for="Comment.PostDate" class="control-label">Post Date</label>
                 <input asp-for="Comment.PostDate" class="form-control" />
                 <span asp-validation-for="Comment.PostDate" class="text-danger"></span>
             </div>
@@ -37,7 +36,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Back to Reviews</a>
 </div>
 
 @section Scripts {

@@ -1,20 +1,20 @@
-﻿@page
+﻿@page "{categoryId:int}"
 @model proiectMP.Pages.ProductsByCategory.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add Product";
 }
 
-<h1>Create</h1>
+<h1>Add New Product</h1>
+<h4>@Model.CategoryName</h4>
 
-<h4>Product</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Product.Name" class="control-label"></label>
+                <label asp-for="Product.Name" class="control-label">Product Title</label>
                 <input asp-for="Product.Name" class="form-control" />
                 <span asp-validation-for="Product.Name" class="text-danger"></span>
             </div>
@@ -33,24 +33,74 @@
                 <input asp-for="Product.Quantity" class="form-control" />
                 <span asp-validation-for="Product.Quantity" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
-                <label asp-for="Product.CategoryID" class="control-label"></label>
-                <select asp-for="Product.CategoryID" class ="form-control" asp-items="ViewBag.CategoryID"></select>
+                <div class="table">
+                    <table>
+                        <tr>
+                            @{
+                                int cnt = 0;
+
+                                foreach (var ingr in Model.AssignedIngredientDataList)
+                                {
+                                    if (cnt++ % 3 == 0)
+                                    {
+                                        @:</tr><tr>
+                                    }
+                                    @:<td>
+                                        <input type="checkbox"
+                                               name="selectedIngredients"
+                                               value="@ingr.IngredientID"
+                                               @(Html.Raw(ingr.Assigned ? "checked=\"checked\"" : "")) />
+                                        @ingr.Name
+                                    @:</td>
+                                }
+                            @:</tr>
+                            }
+                    </table>
+                </div>
             </div>
             <div class="form-group">
-                <label asp-for="Product.CoverImageURL" class="control-label"></label>
-                <input asp-for="Product.CoverImageURL" class="form-control" />
-                <span asp-validation-for="Product.CoverImageURL" class="text-danger"></span>
+                <div class="table">
+                    <table>
+                        <tr>
+                            @{
+                                int cnt2 = 0;
+
+                                foreach (var alg in Model.AssignedAllergenDataList)
+                                {
+                                    if (cnt2++ % 3 == 0)
+                                    {
+                                        @:</tr><tr>
+                                    }
+                                    @:<td>
+                                        <input type="checkbox"
+                                               name="selectedAllergens"
+                                               value="@alg.AllergenID"
+                                               @(Html.Raw(alg.Assigned ? "checked=\"checked\"" : "")) />
+                                        @alg.Name
+                                    @:</td>
+                                }
+                            @:</tr>
+                            }
+                    </table>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Product.CoverImageFile" class="control-label">Choose Image</label>
+                <input type="file" asp-for="Product.CoverImageFile" class="form-control" />
+                <span asp-validation-for="Product.CoverImageFile" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Add" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">Back to @Model.CategoryName</a>
 </div>
 
 @section Scripts {

@@ -29,12 +29,12 @@ namespace proiectMP.Models
 
         public ICollection<ProductAllergen>? ProductAllergens { get; set; }
 
-        public string CoverImageURL { get; set; }
+        public string? CoverImageURL { get; set; }
 
 
         [NotMapped]
 
-        public IFormFile CoverImageFile { get; set; }
+        public IFormFile? CoverImageFile { get; set; }
 
     }
 }
